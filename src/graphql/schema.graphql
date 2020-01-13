@@ -1,0 +1,146 @@
+schema {
+    query: Query,
+    mutation: Mutatition
+    subscription: Subscription
+}
+
+interface Identity {
+    id: ID!
+}
+
+type User implements Identity {
+    id: ID!
+    firstName: String!
+    lastName: String!
+    username: String!
+    email: String!
+    role: String!
+    files: [File!]!
+    createdAt: String!
+    updatedAt: String!
+    profilePic: String!
+}
+
+type Profile implements Identity {
+    firstName: String!
+    lastName: String!
+    username: String!
+    email: String!
+    role: String!
+    profilePic: String!
+}
+
+type UserSetting implements Identity {
+    id: ID!
+    name: String!
+    value: String!
+    userId: ID!
+    createdAt: String!
+    updatedAt: String!
+}
+
+type AppSetting implements Identity {
+    id: ID!
+    name: String!
+    value: String!
+    userId: ID!
+    createdAt: String!
+    updatedAt: String!
+}
+
+type File implements Identity {
+    id: ID!
+    name: String!
+    size: Int!
+    createdBy: User!
+    createdAt: String!
+    updatedAt: String!
+    folderPath: String!
+}
+
+type Folder implements Identity {
+    id: ID!
+    name: String!
+    files: [File!]!
+    parentFolder: ID!
+    childFolder: [ID!]!
+    createdBy: User!
+    createdAt: String!
+    updatedAt: String!
+}
+
+type AuthPayload {
+    user: User!
+    token: String!
+}
+
+input UserData {
+    firstName: String!
+    lastName: String!
+    username: String!
+    password: String!
+    email: String!
+    role: String!
+}
+
+input FileData {
+    name: String
+    size: Int
+    folderPath: String
+}
+
+input FolderData {
+    name: String!
+    parentFolder: ID!
+    childFolder: [ID!]!
+}
+
+type Query {
+    userInfo: User!
+    userSettings(userId: ID!): UserSetting!
+    appSettings(userId: ID!): AppSetting!
+    files(userId: ID!): [File]!
+    file(id: ID!, userId: ID!): File!
+    folders(userId: ID!): [Folder]!
+    folder(id: ID!, userId: ID!): Folder!
+    profile(id: ID!): Profile!
+}
+
+type Mutation {
+    # Auth
+    signUp(data: UserData!): AuthPayload!
+    signIn(username: String!, password: String!): AuthPayload!
+    # User
+    updateProfile(id: ID!, data: UserData!): Profile!
+    # File
+    createFile(data: FileData!): File!
+    updateFile(id: ID!, data: FileData!): File!
+    deleteFile(id: ID!): ID!
+    deleteFiles(id: [ID]!): ID!
+    # Folder
+    createFolder(data: FolderData!): Folder!
+    updateFolder(id: ID!, data: FolderData!): Folder!
+    deleteFolder(id: ID!): ID!
+    deleteFolders(id: [ID]!): ID!
+    # Setting
+    updateUserSetting(id: ID!, value: String): UserSetting!
+    updateAppSetting(id: ID!, value: String): AppSetting!
+}
+
+type Subscription {
+    # User
+    modProfile(id: ID!): Profile!
+    # File
+    newFile(id: ID!): File!
+    modFile(id: ID!): File!
+    deletedFile(id: ID!): ID!
+    deletedFiles(id: ID!): [ID]!
+    # Folder
+    newFolder(id: ID!): Folder!
+    modFolder(id: ID!): Folder!
+    deletedFolder(id: ID!): ID!
+    deletedFolders(id: ID!): [ID]!
+    # Setting
+    modUserSetting:(id: ID!): UserSetting!
+    modAppSetting(id: ID!): AppSetting!
+}

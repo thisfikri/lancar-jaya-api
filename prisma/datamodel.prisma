@@ -1,0 +1,53 @@
+type User {
+  id: ID! @id @unique
+  name: String!
+  username: String! @unique
+  password: String!
+  email: String! @unique
+  role: String!
+  files: [File!]!
+  storagePath: String! @unique
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  profilePic: String! @unique
+}
+
+type UserSetting {
+    id: ID! @id @unique
+    name: String!
+    value: String!
+    userId: ID!
+    createdAt: DateTime! @createdAt
+    updatedAt: DateTime! @updatedAt
+}
+
+type AppSetting {
+    id: ID! @id @unique
+    name: String!
+    value: String!
+    userId: ID!
+    createdAt: DateTime! @createdAt
+    updatedAt: DateTime! @updatedAt
+}
+
+type Folder {
+    id: ID! @id @unique
+    name: String!
+    files: [File!]!
+    parentFolder: ID!
+    childFolder: [ID!]!
+    createdBy: User!
+    createdAt: DateTime! @createdAt
+    updatedAt: DateTime! @updatedAt
+}
+
+type File {
+  id: ID! @id @unique
+  name: String!
+  size: String!
+  path: String! @unique
+  folderPath: String!
+  createdBy: User!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
