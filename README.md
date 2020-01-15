@@ -18,8 +18,19 @@ $ yarn # for install all dependencies
 ```
 
 2. Setup
+
+- Setup Prisma
+```console
+$ cd ./prisma
+$ prisma deploy
+```
+- First select the Demo server. When the browser opens, register with Prisma Cloud and go back to your terminal.
+- Then you need to select the region for your Demo server. Once that’s done, you can just hit enter twice to use the suggested values for service and stage.
+
+- Setup Environment Variables
+
 You must set envrionment variables in your machine or you can create ```.env``` file in your root project.
-```terminal
+```
 NODE_ENV=development
 API_KEY=your_api_key_set_here
 ```
