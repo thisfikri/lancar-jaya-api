@@ -6,6 +6,7 @@ is an API for Lancar Jaya Web & Mobile App
 ## Stack Technology
 - NodeJS (https://nodejs.org)
 - GraphQL (https://graphql.org/)
+- GraphQL Yoga (https://github.com/prisma-labs/graphql-yoga)
 - Prisma (https://www.prisma.io/)
 
 ## Installation and Setup
