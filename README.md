@@ -11,8 +11,10 @@ is an API for Lancar Jaya Web & Mobile App
 open terminal choose your directory and write this command below.
 ```console
 $ git clone https://github.com/thisfikri/lancar-jaya-api.git
-$ cd lancarjaya-api
-$ yarn
+$ cd lancar-jaya-api
+$ yarn global prisma # install prisma first
+$ # then
+$ yarn # for install all dependencies
 ```
 
 2. Setup
