@@ -24,8 +24,9 @@ $ yarn # for install all dependencies
 $ cd ./prisma
 $ prisma deploy
 ```
-- First select the Demo server. When the browser opens, register with Prisma Cloud and go back to your terminal.
-- Then you need to select the region for your Demo server. Once that’s done, you can just hit enter twice to use the suggested values for service and stage.
+First select the Demo server. When the browser opens, register with Prisma Cloud and go back to your terminal.
+Then you need to select the region for your Demo server. Once that’s done, you can just hit enter twice to use the suggested values for service and stage.
+
 
 - Setup Environment Variables
 
@@ -43,7 +44,7 @@ $ yarn dev # for development
 $ # or
 $ yarn start # for production
 ```
-The script run in ```http://localhost:5000/graphql``` if you run code in offline envronment, this can change if you run the script in online environment such as Heroku, the url will be like ```https://your_project.heroku.com```.
+The script run in ```http://localhost:4356``` if you run code in offline envronment, this can change if you run the script in online environment such as Heroku, the url will be like ```https://your_project.heroku.com```.
 
 you can change the port and endpoint in ```./index.js```.
 ```javascript
