@@ -32,5 +32,5 @@ you can change the port and endpoint in ```./index.js```.
 // you can change port here
 const port = 5000
 // you can change endpoint here
-const endpoint = '/graphql' // you also change endpoint like this '/' (will be: http://your_domain:your_port/)
+const endpoint = '/' // you also change endpoint like this '/' (will be: http://your_domain:your_port/)
 ```

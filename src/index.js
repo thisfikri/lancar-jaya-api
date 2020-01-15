@@ -1,6 +1,8 @@
 const { GraphQLServer } = require('graphql-yoga');
 const { prisma } = require('../prisma/generated/prisma-client');
 const resolvers = require('./graphql/resolvers');
+const port = 4356;
+const endpoint = '/';
 
 const server = new GraphQLServer({
     typeDefs: './src/graphql/schema.graphql',
@@ -19,6 +21,6 @@ const server = new GraphQLServer({
     }
 });
 
-server.start({port: process.env.PORT || 4356}, () => {
+server.start({port: process.env.PORT || port, endpoint}, () => {
     console.log(`Server is running ${process.env.NODE_ENV === 'development' ? 'on http://localhost:4356' : ''}`);
 });
