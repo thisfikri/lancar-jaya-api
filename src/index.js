@@ -5,15 +5,15 @@ const resolvers = require('./graphql/resolvers');
 const server = new GraphQLServer({
     typeDefs: './src/graphql/schema.graphql',
     resolvers,
-    context: c => {
+    context: request => {
         const apiKey = process.env.API_KEY;
         
-        if (apiKey !== c.request.get('api-key')) {
+        if (apiKey !== request.request.get('api-key')) {
             throw new Error('You not have access to this API.');
         }
 
         return {
-            ...c,
+            ...request,
             prisma
         }
     }

@@ -102,22 +102,22 @@ const deletedFolders = {
 }
 
 // Setting
-function modUserSetting(parent, args, context, info) {
+function modUserSettingSubcribe(parent, args, context, info) {
     return context.prisma.$subscribe.userSettings({id: args.id, mutation_in: ['UPDATED']}).node();
 }
 
-const modFile = {
+const modUserSetting = {
     subscribe: modUserSetting,
     resolve: payload => {
         return payload
     }
 }
 
-function modAppSetting(parent, args, context, info) {
+function modAppSettingSubscribe(parent, args, context, info) {
     return context.prisma.$subscribe.appSettings({id: args.id, mutation_in: ['UPDATED']}).node();
 }
 
-const modFile = {
+const modAppSetting = {
     subscribe: modAppSetting,
     resolve: payload => {
         return payload

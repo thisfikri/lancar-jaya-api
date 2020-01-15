@@ -1,6 +1,6 @@
 schema {
     query: Query,
-    mutation: Mutatition
+    mutation: Mutation
     subscription: Subscription
 }
 
@@ -21,7 +21,7 @@ type User implements Identity {
     profilePic: String!
 }
 
-type Profile implements Identity {
+type Profile {
     firstName: String!
     lastName: String!
     username: String!
@@ -84,15 +84,15 @@ input UserData {
 }
 
 input FileData {
-    name: String
-    size: Int
-    folderPath: String
+    name: String!
+    size: Int!
+    folderPath: String!
 }
 
 input FolderData {
     name: String!
     parentFolder: ID!
-    childFolder: [ID!]!
+    childFolder: [ID]!
 }
 
 type Query {
@@ -141,6 +141,6 @@ type Subscription {
     deletedFolder(id: ID!): ID!
     deletedFolders(id: ID!): [ID]!
     # Setting
-    modUserSetting:(id: ID!): UserSetting!
+    modUserSetting(id: ID!): UserSetting!
     modAppSetting(id: ID!): AppSetting!
 }

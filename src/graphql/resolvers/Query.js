@@ -24,7 +24,7 @@ async function userSettings(parent, args, context, info) {
     const {userId, role} = getUserData(request);
     const perms = getPermisson(role);
     if (perms === 'fullAccess' || perms === 'RWD') {
-        return await context.prisma.userSetting({ id: userId });
+        return await context.prisma.userSettings({ id: userId });
     }
 
     throw new Error('You not have permission to this action.');
@@ -34,7 +34,7 @@ async function appSettings(parent, args, context, info) {
     const {userId, role} = getUserData(request);
     const perms = getPermisson(role);
     if (perms === 'fullAccess' || perms === 'RWD') {
-        return await context.prisma.appSetting({ id: userId });
+        return await context.prisma.appSettings({ id: userId });
     }
 
     throw new Error('You not have permission to this action.');
@@ -83,8 +83,8 @@ async function folder(parent, args, context, info) {
 module.exports = {
     userInfo,
     profile,
-    userSetting,
-    appSetting,
+    userSettings,
+    appSettings,
     files,
     file,
     folder,

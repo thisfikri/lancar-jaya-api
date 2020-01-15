@@ -1,5 +1,6 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const uuid = require('uuid/v4');
 const { APP_SECRET, getUserData, getPermisson } = require('./../../utils');
 
 async function signIn(parent, args, context, info) {
@@ -23,9 +24,10 @@ async function signIn(parent, args, context, info) {
 
 async function signUp(parent, args, context, info) {
     const password = await bcrypt.hash(args.data.password, 10);
-    const user = await context.prisma.createUser({ ...args.data, password });
+    const storagePath = uuid().replace('-', '');
+    const profilePic = `/profile/${uuid().replace('-', '')}/default.png`;
+    const user = await context.prisma.createUser({ ...args.data, password, storagePath, profilePic });
     const token = jwt.sign({ userId: user.id, role: user.role }, APP_SECRET)
-    console.log(user)
     return {
         token,
         user
@@ -83,12 +85,12 @@ async function updateAppSetting(parent, args, context, info) {
 async function createFile(parent, {data}, context, info) {
     const {userId, role} = getUserData(context);    
     const perms = getPermisson(role);
+    const path = '/dsadad/file.zd'
 
     if (perms === 'fullAccess' || perms === 'RWD')  {
         return await context.prisma.createFile({
-            name: data.name,
-            size: data.size,
-            path: data.path,
+            ...data,
+            path,
             createdBy: {connect: {id: userId}}
         });
     }
@@ -133,12 +135,12 @@ async function deleteFiles(parent, {id}, {context}, info) {
     return false;
 }
 
-async function createFolder(parent, {data}, {context}, info) {
+async function createFolder(parent, {data}, context, info) {
     const {userId, role} = getUserData(context);
     const perms = getPermisson(role);
 
     if (perms === 'fullAccess' || perms === 'RWD')  {
-        return await context.prisma.createFolder(data);
+        return await context.prisma.createFolder({...data, createdBy: {connect: {id: userId}}});
     }
 
     return false;

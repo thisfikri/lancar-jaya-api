@@ -1,6 +1,7 @@
 type User {
   id: ID! @id @unique
-  name: String!
+  firstName: String!
+  lastName: String!
   username: String! @unique
   password: String!
   email: String! @unique
@@ -35,7 +36,7 @@ type Folder {
     name: String!
     files: [File!]!
     parentFolder: ID!
-    childFolder: [ID!]!
+    childFolder: [ID]! @scalarList(strategy: RELATION)
     createdBy: User!
     createdAt: DateTime! @createdAt
     updatedAt: DateTime! @updatedAt
