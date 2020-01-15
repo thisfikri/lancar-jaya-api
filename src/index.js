@@ -21,6 +21,12 @@ const server = new GraphQLServer({
     }
 });
 
-server.start({port: process.env.PORT || port, endpoint}, () => {
-    console.log(`Server is running ${process.env.NODE_ENV === 'development' ? 'on http://localhost:4356' : ''}`);
+server.start(
+    {
+        port: process.env.PORT || port,
+        endpoint,
+        playground: process.env.NODE_ENV === 'development' ? '/playground' : false,
+        debug: process.env.NODE_ENV === 'development'
+    }, () => {
+    console.log(`Server is running ${process.env.NODE_ENV === 'development' ? `on http://localhost:${port}` : ''}`);
 });
