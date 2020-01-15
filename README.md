@@ -1,4 +1,4 @@
-# Lancar Jaya API (NoSQL)
+# Lancar Jaya API
 is an API for Lancar Jaya Web & Mobile App
 
 ## Installation and Setup
