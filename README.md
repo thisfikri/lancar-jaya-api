@@ -1,5 +1,6 @@
 # Lancar Jaya API
 is an API for Lancar Jaya Web & Mobile App
+*\*Note: this API is still under development*
 
 ## Stack Technology
 - NodeJS (https://nodejs.org)
