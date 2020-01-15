@@ -25,6 +25,7 @@ $ cd ./prisma
 $ prisma deploy
 ```
 First select the Demo server. When the browser opens, register with Prisma Cloud and go back to your terminal.
+
 Then you need to select the region for your Demo server. Once that’s done, you can just hit enter twice to use the suggested values for service and stage.
 
 
@@ -45,6 +46,7 @@ $ # or
 $ yarn start # for production
 ```
 The script run in ```http://localhost:4356``` if you run code in offline envronment, this can change if you run the script in online environment such as Heroku, the url will be like ```https://your_project.heroku.com```.
+
 Set header ```"api-key":"your_api_key"``` to use this API.
 
 you can change the port and endpoint in ```./index.js```.
