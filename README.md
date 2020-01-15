@@ -1,9 +1,12 @@
 # Lancar Jaya API
 is an API for Lancar Jaya Web & Mobile App
 
+*\*Note: This API is still under development, is not released yet.*
+
 ## Stack Technology
 - NodeJS (https://nodejs.org)
 - GraphQL (https://graphql.org/)
+- GraphQL Yoga (https://github.com/prisma-labs/graphql-yoga)
 - Prisma (https://www.prisma.io/)
 
 ## Installation and Setup
@@ -19,15 +22,17 @@ $ yarn # for install all dependencies
 
 2. Setup
 
-- Setup Prisma
+- Prisma
 ```console
 $ cd ./prisma
 $ prisma deploy
 ```
-- First select the Demo server. When the browser opens, register with Prisma Cloud and go back to your terminal.
-- Then you need to select the region for your Demo server. Once that’s done, you can just hit enter twice to use the suggested values for service and stage.
+First select the Demo server. When the browser opens, register with Prisma Cloud and go back to your terminal.
 
-- Setup Environment Variables
+Then you need to select the region for your Demo server. Once that’s done, you can just hit enter twice to use the suggested values for service and stage.
+
+
+- Environment Variables
 
 You must set envrionment variables in your machine or you can create ```.env``` file in your root project.
 ```
@@ -43,7 +48,9 @@ $ yarn dev # for development
 $ # or
 $ yarn start # for production
 ```
-The script run in ```http://localhost:5000/graphql``` if you run code in offline envronment, this can change if you run the script in online environment such as Heroku, the url will be like ```https://your_project.heroku.com```.
+The script run in ```http://localhost:4356``` if you run code in offline envronment, this can change if you run the script in online environment such as Heroku, the url will be like ```https://your_project.heroku.com```.
+
+Set header ```"api-key":"your_api_key"``` to use this API.
 
 you can change the port and endpoint in ```./index.js```.
 ```javascript
