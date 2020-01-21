@@ -32,8 +32,7 @@ First select the Demo server. When the browser opens, register with Prisma Cloud
 
 Then you need to select the region for your Demo server. Once that’s done, you can just hit enter twice to use the suggested values for service and stage.
 
-**If you using docker**
-check this [documentation](https://www.prisma.io/docs/1.34/get-started/01-setting-up-prisma-new-database-JAVASCRIPT-a002/)
+*\*If you using docker check this [documentation](https://www.prisma.io/docs/1.34/get-started/01-setting-up-prisma-new-database-JAVASCRIPT-a002/)*
 
 - Environment Variables
 
