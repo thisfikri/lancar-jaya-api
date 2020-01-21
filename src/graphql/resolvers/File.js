@@ -1,5 +1,5 @@
 function createdBy(parent, args, context, info) {
-    return context.prisma.file({createdBy: parent.createdBy}).createdBy();
+    return context.prisma.file({id: parent.id}).createdBy();
 }
 
 module.exports = {

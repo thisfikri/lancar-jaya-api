@@ -1,3 +1,6 @@
+# this is datamodel for mongodb, if you using relational database such MySQL, change relation directive.
+# check https://www.prisma.io/docs/1.34/datamodel-and-migrations/datamodel-MYSQL-knul/
+
 type User {
   id: ID! @id @unique
   firstName: String!
@@ -6,7 +9,7 @@ type User {
   password: String!
   email: String! @unique
   role: String!
-  files: [File!]!
+  files: [File!]! @relation(link: INLINE)
   storagePath: String! @unique
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
@@ -34,10 +37,10 @@ type AppSetting {
 type Folder {
     id: ID! @id @unique
     name: String!
-    files: [File!]!
+    files: [File!]! @relation(link: INLINE)
     parentFolder: ID!
-    childFolder: [ID]! @scalarList(strategy: RELATION)
-    createdBy: User!
+    childFolder: [ID]! # @scalarList(strategy: RELATION) uncomment @scalarList if you using relational database
+    createdBy: User! @relation(link: INLINE)
     createdAt: DateTime! @createdAt
     updatedAt: DateTime! @updatedAt
 }
@@ -45,7 +48,7 @@ type Folder {
 type File {
   id: ID! @id @unique
   name: String!
-  size: String!
+  size: Int!
   path: String! @unique
   folderPath: String!
   createdBy: User!
